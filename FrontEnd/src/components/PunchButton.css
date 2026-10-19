@@ -1,0 +1,61 @@
+.punch-btn {
+  width: 216px;
+  height: 216px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-family: var(--font-display);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+  box-shadow: 0 0 0 1px var(--ink), 0 12px 32px -12px rgba(28, 27, 25, 0.4);
+}
+
+.punch-btn:hover:not(:disabled) {
+  transform: scale(1.02);
+}
+
+.punch-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.punch-btn:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.punch-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.punch-btn.state-in {
+  background: var(--in);
+  box-shadow: 0 0 0 1px var(--in), 0 12px 32px -12px rgba(46, 110, 78, 0.5);
+}
+
+.punch-btn.state-out {
+  background: var(--out);
+  box-shadow: 0 0 0 1px var(--out), 0 12px 32px -12px rgba(156, 66, 33, 0.5);
+}
+
+.punch-btn-label {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.punch-btn-sub {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+@media (max-width: 420px) {
+  .punch-btn { width: 180px; height: 180px; }
+}

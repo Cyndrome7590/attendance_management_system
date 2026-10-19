@@ -1,0 +1,130 @@
+.login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 32px 28px;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.brand-mark {
+  width: 10px;
+  height: 10px;
+  background: var(--ink);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+.brand-name {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.login-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.login-subtitle {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.field input {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-family: var(--font-mono);
+  color: var(--ink);
+}
+
+.field input:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.login-error {
+  font-size: 13px;
+  color: var(--out);
+  background: var(--out-bg);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.login-submit {
+  margin-top: 4px;
+  border: none;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.login-submit:active {
+  transform: scale(0.98);
+}
+
+.login-hint {
+  margin: 20px 0 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.login-hint code {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-family: var(--font-mono);
+}
+
+.login-link {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+}
