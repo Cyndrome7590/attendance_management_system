@@ -1,32 +1,43 @@
+
 export function getCurrentLocation() {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     if (!("geolocation" in navigator)) {
-      resolve(null);
+      reject(new Error("Your browser does not support location services."));
       return;
     }
 
-    let settled = false;
-    const settle = (value) => {
-      if (settled) return;
-      settled = true;
-      resolve(value);
-    };
-
-    const safetyTimer = setTimeout(() => settle(null), 6000);
+    if (!window.isSecureContext) {
+      reject(
+        new Error("Location requires HTTPS. Open the deployed website using its HTTPS address.")
+      );
+      return;
+    }
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        clearTimeout(safetyTimer);
-        settle({
+        resolve({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         });
       },
-      () => {
-        clearTimeout(safetyTimer);
-        settle(null);
+      (error) => {
+        let message = "Unable to get your location. Please try again.";
+
+        if (error.code === error.PERMISSION_DENIED) {
+          message = "Location permission is denied. Allow location access in your browser settings.";
+        } else if (error.code === error.POSITION_UNAVAILABLE) {
+          message = "Your location is unavailable. Check your device location settings.";
+        } else if (error.code === error.TIMEOUT) {
+          message = "Getting your location took too long. Please try again.";
+        }
+
+        reject(new Error(message));
       },
-      { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+      {
+        enableHighAccuracy: true,
+        timeout: 15000,
+        maximumAge: 0,
+      }
     );
   });
 }
